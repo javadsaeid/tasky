@@ -4,7 +4,8 @@
     </x-slot:heading>
     <h1>Job Details</h1>
 
-    <p class="p-6">
-        <strong>{{ $job['title'] }}:</strong> Pays {{ $job['salary'] }} per year.
-    </p>
+    <div class="p-6">
+        <div class="font-bold text-blue-500">{{ $job->employer->name }}</div>
+        <strong>{{ $job['title'] }}</strong> <br> Pays {{ $job['salary'] }} per year.
+    </div>
 </x-layout>
