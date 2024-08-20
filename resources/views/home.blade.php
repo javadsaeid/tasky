@@ -1,6 +1,13 @@
 <x-layout>
     <x-slot:heading>
-        Home Heading
+        Job Listings
     </x-slot:heading>
-    <h1>home page</h1>
+    <div>
+        @foreach ($jobs as $job)
+            <a href="/jobs/{{ $job['id'] }}" class="hover:underline block px-4 py-6 border border-gray-200">
+                <strong>{{ $job['title'] }}:</strong> Pays {{ $job['salary'] }} per year.
+            </a>
+        @endforeach
+    </div>
+
 </x-layout>
