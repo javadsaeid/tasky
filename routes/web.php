@@ -5,15 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $jobs = Job::with('employer')->with('tags')->cursorPaginate(10);
-    return view('home', ['jobs' => $jobs]);
+    return view('jobs.index', ['jobs' => $jobs]);
 });
 
-Route::get("/about", function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-   return view('contact');
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
 });
 
 Route::get('/jobs/{id}', function ($id) {
@@ -21,5 +17,22 @@ Route::get('/jobs/{id}', function ($id) {
     if (!$job) {
         abort(404,'job not found');
     }
-   return view('job', ['job' => $job]);
+    return view('jobs.show', ['job' => $job]);
 });
+
+Route::post('/jobs', function () {
+    $title = request()->get('title');
+    $salary = request()->get('salary');
+    dd($title, $salary);
+});
+
+Route::get("/about", function () {
+
+    return view('about');
+});
+
+Route::get('/contact', function () {
+   return view('contact');
+});
+
+
