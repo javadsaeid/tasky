@@ -4,7 +4,7 @@ use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $jobs = Job::with('employer')->with('tags')->cursorPaginate(10);
+    $jobs = Job::with('employer')->with('tags')->latest()->cursorPaginate(10);
     return view('jobs.index', ['jobs' => $jobs]);
 });
 
@@ -21,9 +21,13 @@ Route::get('/jobs/{id}', function ($id) {
 });
 
 Route::post('/jobs', function () {
-    $title = request()->get('title');
-    $salary = request()->get('salary');
-    dd($title, $salary);
+    Job::create([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'employer_id' => 1
+    ]);
+
+    dd('done');
 });
 
 Route::get("/about", function () {

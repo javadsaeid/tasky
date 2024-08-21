@@ -9,6 +9,8 @@ class Job extends Model
 {
     use HasFactory;
     protected $table = 'job_listings';
+    // disable mass assignment for all field's.
+    protected $guarded = [];
 
     public function employer()
     {
