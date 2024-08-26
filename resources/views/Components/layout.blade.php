@@ -134,8 +134,22 @@
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
         </div>
     </header>
+
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <!-- In a Blade template (e.g., resources/views/layouts/app.blade.php) -->
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             {{ $slot }}
         </div>
     </main>

@@ -2,8 +2,7 @@
     <x-slot:heading>
         <div class="flex justify-between">
             <div>Job Listings</div>
-            <a href="/jobs/create" style="font-size: 1rem;
-             border: 1px solid blueviolet; border-radius: 5px; padding: 0 5px; color: blue;">Create Job</a>
+            <x-button href="/jobs/create">Create Job</x-button>
         </div>
     </x-slot:heading>
     <div class="space-y-3">

@@ -8,26 +8,56 @@ Route::get('/', function () {
     return view('jobs.index', ['jobs' => $jobs]);
 });
 
+// create job
 Route::get('/jobs/create', function () {
     return view('jobs.create');
 });
 
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-    if (!$job) {
-        abort(404,'job not found');
-    }
+// show job
+Route::get('/jobs/{job}', function (Job $job) {
     return view('jobs.show', ['job' => $job]);
 });
 
+// store job
 Route::post('/jobs', function () {
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
+
     Job::create([
         'title' => request('title'),
         'salary' => request('salary'),
         'employer_id' => 1
     ]);
 
-    dd('done');
+    return redirect("/")->with('success', 'new job created successfully');
+});
+
+// edit job
+Route::get('/jobs/{job}/edit', function (Job $job) {
+    return view('jobs.edit', ['job' => $job]);
+});
+
+// update
+Route::patch('/jobs/{job}', function (Job $job) {
+    request()->validate([
+       'title' => ['required', 'min:3'],
+       'salary' => ['required']
+    ]);
+
+    $job->update([
+        'title' => request('title'),
+        'salary' => request('salary')
+    ]);
+
+    return redirect('/jobs/'.$job->id."/edit")->with('success', 'job updated successfully');
+});
+
+// delete
+Route::delete('/jobs/{job}', function (Job $job) {
+    $job->delete();
+    return redirect('/jobs');
 });
 
 Route::get("/about", function () {
