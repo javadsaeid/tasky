@@ -11,14 +11,14 @@
                     <div class="sm:col-span-4">
                         <x-label-form for="first-name">First Name</x-label-form>
                         <div class="mt-2">
-                            <x-input-form required type="text" name="first-name" id="title" autocomplete="first-name" />
+                            <x-input-form required type="text" name="first_name" id="title" autocomplete="first-name" />
                             <x-error-form name="first-name" />
                         </div>
                     </div>
                     <div class="sm:col-span-4">
                         <x-label-form for="last-name">Last Name</x-label-form>
                         <div class="mt-2">
-                            <x-input-form required type="text" name="last-name" id="last-name" autocomplete="last-name" />
+                            <x-input-form required type="text" name="last_name" id="last-name" autocomplete="last-name" />
                             <x-error-form name="last-name" />
                         </div>
                     </div>
@@ -40,10 +40,10 @@
                     </div>
 
                     <div class="sm:col-span-4">
-                        <x-label-form for="repeat-password">Repeat Password</x-label-form>
+                        <x-label-form for="password_confirmation">Confirm Password</x-label-form>
                         <div class="mt-2">
-                            <x-input-form required type="password" name="repeat-password" id="repeat-password" autocomplete="repeat-password" />
-                            <x-error-form name="repeat-password" />
+                            <x-input-form required type="password" name="password_confirmation" id="password_confirmation" autocomplete="password_confirmation" />
+                            <x-error-form name="password_confirmation" />
                         </div>
                     </div>
                 </div>
