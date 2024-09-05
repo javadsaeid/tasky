@@ -17,3 +17,10 @@ Route::post('/register', [RegisterUserController::class, 'store']);
 Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy']);
+
+
+Route::get('test', function () {
+    $mail = \Illuminate\Support\Facades\Mail::class;
+    $mail::to('javadsaeid8@gmail.com')->send(new \App\Mail\JobPosted());
+   return "this route is test";
+});
